@@ -18,7 +18,6 @@ export const registerUser = async (email, password, displayName) => {
     try{
         await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(auth.currentUser, {displayName});
-        console.log(auth.currentUser);
     } catch(error) {
         return error.message.replace('Firebase: ', '');
     }
@@ -27,7 +26,6 @@ export const registerUser = async (email, password, displayName) => {
 export const loginUser = async (email, password) => {
     try {
        const user = await signInWithEmailAndPassword(auth, email, password);
-       console.log(user);
     } catch(error) {
         return error.message.replace('Firebase: ', '');
     }

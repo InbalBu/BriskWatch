@@ -26,7 +26,6 @@ const Navbar = () => {
     const searchHandler = async () => {
         const response = await axios.get(`${searchUrl}${search}`);
         setMovies(response.data.results);
-        console.log(response.data.results);
     }
 
   return (

@@ -21,8 +21,8 @@ const Home = () => {
   
   // passing props to MovieCard component so he can have access to the data of the movie
   return (
-    <div className='bg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-10 pb-10 pl-20 pr-20 lg:grid-cols-5 xl:grid-cols-5 gap-5 '>
-      {movies.map(movie => <MovieCard key={movie.id} movie = {movie} />)}
+    <div id='home' className='bg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 pt-10 pb-10 pl-20 pr-20 lg:grid-cols-5 xl:grid-cols-5 gap-5 '>
+      {movies.length != 0 ? movies.map(movie => <MovieCard key={movie.id} movie = {movie} />) : <h1 className='text-4xl font-semibold justify-center text-center'>No Movies Found</h1>}
     </div>
   )
 }
