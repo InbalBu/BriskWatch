@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes} from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import MovieDetails from './pages/MovieDetails';
+import { useEffect, useState } from 'react';
+import { AuthContext } from './context/AuthContext';
+import { authListener} from './firebase'
+import { MovieContext } from './context/MoviesContext';
+
 
 function App() {
+
+  const [currentUser, setCurrentUser] = useState();
+  // AuthContext provides the data to all componentes inside it, its children
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    authListener(setCurrentUser);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext.Provider value={ {currentUser} }> 
+    <MovieContext.Provider value={ {movies, setMovies} }>
+    {/* now that currentUser state is available to all components inside AuthContext */}
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register/>}/>
+        <Route path="/details/:id" element={<MovieDetails/>}/>
+      </Routes>
+      </MovieContext.Provider>
+    </AuthContext.Provider>
   );
 }
 
