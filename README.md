@@ -9,7 +9,7 @@ Demo: https://brisk-watch.vercel.app/
  3. Watch trailers for a variety of movies.
  4. Full responsive app, easy use both pc and mobile.
  
- Project built with React, tailwindcss, javascript. <br/>
+ Project built with React, Firebase, tailwindcss, javascript. <br/>
  API: The Movie Database (TMDB)
  
 ![1](https://user-images.githubusercontent.com/102725041/203999106-a2758dea-5446-4073-96a7-eef710139f48.png)
